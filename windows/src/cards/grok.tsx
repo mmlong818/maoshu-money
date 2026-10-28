@@ -451,7 +451,7 @@ function GrokBotCard({ ctx }: { ctx: CardContext }) {
           <ProviderQuotaContent quota={quota} tint={Theme.grokBot} />
         </>
       ) : (
-        quotaEnabled && <Caption size={9} text={L("官方数据暂时不可用，Tokei 将自动重试")} />
+        quotaEnabled && <Caption size={9} text={L("官方数据暂时不可用，猫叔 将自动重试")} />
       )}
       {/* Mac 版的 grokBotReauthorizePrompt（授权助手更新后重新授权）依赖 macOS 钥匙串助手，Windows 不显示。 */}
     </VStack>

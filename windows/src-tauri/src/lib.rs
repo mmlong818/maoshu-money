@@ -238,7 +238,7 @@ fn build_tray(app: &AppHandle) -> tauri::Result<()> {
     let icon = app.default_window_icon().cloned().expect("bundle icon");
     TrayIconBuilder::with_id("main")
         .icon(icon)
-        .tooltip("Tokei")
+        .tooltip("猫叔的钱去哪了？")
         .menu(&menu)
         .show_menu_on_left_click(false)
         .on_menu_event(move |app, event| match event.id().as_ref() {

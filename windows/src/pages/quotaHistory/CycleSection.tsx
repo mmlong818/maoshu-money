@@ -39,7 +39,7 @@ function missingHint(tool: string): string {
     case "claude":
       return L("Claude Code 还没有周额度卡片：可打开 Claude Desktop 的 Usage 页面，") + L("或在设置的「隐私与额度」开启 Claude Code CLI 额度查询。");
     case "grok":
-      return L("Grok 还没有额度卡片：登录一次 grok.com 让 Tokei 抓到额度读数。");
+      return L("Grok 还没有额度卡片：登录一次 grok.com 让 猫叔 抓到额度读数。");
     default:
       return L("Codex 还没有周额度卡片：跑一次 codex 让它刷新额度读数。");
   }

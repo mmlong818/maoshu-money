@@ -273,7 +273,7 @@ export const cursorCard = providerQuotaCard({
   visibleKey: "showCursor",
   tint: Theme.cursor,
   hasAccountUsage: true,
-  setupHint: () => L("请确认 Cursor.app 已登录；Tokei 会复用其本地登录态读取额度。"),
+  setupHint: () => L("请确认 Cursor.app 已登录；猫叔 会复用其本地登录态读取额度。"),
 });
 
 export const zedCard = providerQuotaCard({

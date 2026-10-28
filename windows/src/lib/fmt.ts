@@ -5,15 +5,22 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 export function human(n: number): string {
   const v = Number(n) || 0;
-  // 中文按「亿」进位；其他语言用国际通行的 B（十亿）。
+  // 中文按「万 / 亿」进位；其他语言用国际通行的 K / M / B。
   if (isChinese()) {
-    if (v >= 100_000_000) return `${(v / 100_000_000).toFixed(1)}亿`; // l10n-ignore
-  } else if (v >= 1_000_000_000) {
-    return `${(v / 1_000_000_000).toFixed(1)}B`;
+    if (v >= 100_000_000) return `${yi(v / 100_000_000)}亿`; // l10n-ignore
+    if (v >= 10_000) return `${yi(v / 10_000)}万`; // l10n-ignore
+    return v.toFixed(0);
   }
+  if (v >= 1_000_000_000) return `${(v / 1_000_000_000).toFixed(1)}B`;
   if (v >= 1_000_000) return `${(v / 1_000_000).toFixed(1)}M`;
   if (v >= 1_000) return `${(v / 1_000).toFixed(0)}K`;
   return v.toFixed(0);
+}
+
+/** 万 / 亿的数值：一位小数，整数或三位以上省掉小数（9210万、1.2亿）。 */
+function yi(value: number): string {
+  const text = value >= 1000 ? value.toFixed(0) : value.toFixed(1);
+  return text.endsWith(".0") ? text.slice(0, -2) : text;
 }
 
 /** 千分位精确写法，分隔符固定为逗号。 */

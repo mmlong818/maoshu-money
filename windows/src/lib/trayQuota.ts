@@ -68,8 +68,9 @@ export function trayQuotaMetrics(usage: Usage): TrayQuotaMetric[] {
   return metrics;
 }
 
-/** 托盘悬停提示：「Tokei · Claude 5h 42% · Codex 周 80%」，全关或都没有时只写 Tokei。 */
+/** 托盘悬停提示：「猫叔的钱去哪了？ · Claude 5h 42% · Codex 周 80%」，全关或都没有时只写品牌名。 */
 export function trayQuotaTooltip(usage: Usage): string {
   const parts = trayQuotaMetrics(usage).map(({ source, value }) => `${source.label()} ${value === "—" ? value : `${value}%`}`);
-  return parts.length ? `Tokei · ${parts.join(" · ")}` : "Tokei";
+  const brand = L("猫叔的钱去哪了？");
+  return parts.length ? `${brand} · ${parts.join(" · ")}` : brand;
 }

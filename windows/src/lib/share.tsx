@@ -993,13 +993,13 @@ function drawTotals(ctx: CanvasRenderingContext2D | null, t: ShareTotals, period
   return h;
 }
 
-/** 落款：更新时间 + 「Tokei · 知度」（footerBrand）。 */
+/** 落款：更新时间 + 「猫叔的钱去哪了？」（footerBrand）。 */
 function drawFooter(ctx: CanvasRenderingContext2D | null, updatedLine: string | null, x: number, y: number, w: number, f: Fonts): number {
   const updatedH = updatedLine ? lh(10) + 4 : 0;
   const brandH = lh(9);
   if (ctx) {
     if (updatedLine) drawText(ctx, updatedLine, x, y + lh(10) / 2, fontSpec(10, 400, f.mono), T.tertiary, w);
-    drawText(ctx, L("Tokei · 知度"), x, y + updatedH + brandH / 2, fontSpec(9, 500, f.sans), fill(0.58 * 0.85), w);
+    drawText(ctx, L("猫叔的钱去哪了？"), x, y + updatedH + brandH / 2, fontSpec(9, 500, f.sans), fill(0.58 * 0.85), w);
   }
   return updatedH + brandH;
 }
@@ -1043,7 +1043,7 @@ function overviewLayout(lines: ShareLine[], range: RangeKey, updatedLine: string
     const pad = 16;
     const inner = MULTI_WIDTH - pad * 2;
     let y = pad;
-    y += drawShareHeader(ctx, L("Tokei 用量"), period, Theme.claude, pad, y, inner, f);
+    y += drawShareHeader(ctx, L("猫叔 · AI 用量"), period, Theme.claude, pad, y, inner, f);
     y += 13;
     if (!lines.length) {
       const h = lh(12);
@@ -1070,7 +1070,7 @@ function toolLayout(line: ShareLine, range: RangeKey, updatedLine: string | null
     const pad = 16;
     const inner = SINGLE_WIDTH - pad * 2;
     let y = pad;
-    y += drawShareHeader(ctx, line.name, `Tokei · ${period}`, tintFor(line.name), pad, y, inner, f, line.sessions);
+    y += drawShareHeader(ctx, line.name, `${L("猫叔")} · ${period}`, tintFor(line.name), pad, y, inner, f, line.sessions);
     y += 12;
     y += drawToolCard(ctx, line, period, false, pad, y, inner, f);
     y += 12;

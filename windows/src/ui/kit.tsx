@@ -9,7 +9,7 @@ import { CARD_RADIUS, fill, fs, gradient, rgba, T, Theme, type RGB } from "./the
 const MONO = "var(--mono)";
 
 export function Card({ tint, children }: { tint: RGB; children: ReactNode }) {
-  // 毛玻璃上的浮起卡片：淡色填充 + 左上到右下渐隐的描边 + 柔和投影（Design.swift Card）。
+  // 深可可底上的浮起卡片：淡色填充 + 左上到右下渐隐的描边 + 柔和投影（Design.swift Card）。
   const layer = (color: string) => `linear-gradient(${color}, ${color}) padding-box`;
   return (
     <div
@@ -18,10 +18,10 @@ export function Card({ tint, children }: { tint: RGB; children: ReactNode }) {
         borderRadius: CARD_RADIUS,
         border: "1px solid transparent",
         background: [
-          "linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0) 50%) padding-box",
-          layer(rgba(tint, 0.08)),
-          layer("rgba(0,0,0,0.26)"),
-          `linear-gradient(135deg, ${rgba(tint, 0.38)}, ${rgba(tint, 0.05)}) border-box`,
+          "linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0) 50%) padding-box",
+          layer(rgba(tint, 0.055)),
+          layer("rgba(13,8,10,0.68)"),
+          `linear-gradient(135deg, ${rgba(tint, 0.42)}, ${rgba(tint, 0.06)}) border-box`,
         ].join(", "),
       }}
     >
@@ -71,17 +71,22 @@ export function CardHead({
 }) {
   const provided = useContext(CardHeadTrailing);
   return (
-    <HStack gap={7}>
+    <HStack gap={8}>
       <span
         style={{
-          width: 8,
-          height: 8,
-          borderRadius: 4,
+          width: 24,
+          height: 24,
+          borderRadius: 8,
           background: gradient(tint),
-          boxShadow: `0 0 3px ${rgba(tint, 0.6)}`,
+          color: "rgba(255, 250, 248, 0.95)",
+          display: "grid",
+          placeItems: "center",
           flex: "none",
+          boxShadow: `0 2px 7px ${rgba(tint, 0.4)}`,
         }}
-      />
+      >
+        <Icon name="sparkles" size={fs(11)} strokeWidth={2.4} />
+      </span>
       <span className="card-title" style={{ fontSize: fs(14), fontWeight: 700, color: T.primary }}>{title}</span>
       {sessions > 0 && (
         <span
@@ -108,7 +113,7 @@ export function CardHead({
 export function CostHeadline({ value, caption }: { value: string; caption: string }) {
   return (
     <HStack gap={7} align="baseline">
-      <span style={{ fontSize: fs(23), fontWeight: 700, color: "#fff", fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      <span style={{ fontSize: fs(25), fontWeight: 750, color: "#fff", fontVariantNumeric: "tabular-nums", letterSpacing: 0.3 }}>{value}</span>
       <span style={{ fontSize: fs(10), color: T.tertiary }}>{caption}</span>
     </HStack>
   );
@@ -133,24 +138,25 @@ export function MetricCell({ m, tint }: { m: Metric; tint: RGB }) {
     <div data-metric={JSON.stringify([m.icon, m.label])} title={m.help} style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
       <span
         style={{
-          width: 21,
-          height: 21,
-          borderRadius: 11,
-          background: rgba(tint, 0.1),
+          width: 26,
+          height: 26,
+          borderRadius: 9,
+          background: rgba(tint, 0.15),
+          boxShadow: `inset 0 0 0 1px ${rgba(tint, 0.14)}`,
           color: rgba(tint),
           display: "grid",
           placeItems: "center",
           flex: "none",
         }}
       >
-        <Icon name={m.icon} size={fs(10.5)} strokeWidth={2.6} />
+        <Icon name={m.icon} size={fs(12)} strokeWidth={2.4} />
       </span>
       <div style={{ display: "flex", flexDirection: "column", gap: 1, minWidth: 0 }}>
         <span style={{ fontSize: fs(9.5), color: T.tertiary, display: "flex", alignItems: "center", gap: 3, overflowWrap: "anywhere" }}>
           {m.label}
           {m.help && <Icon name="info.circle" size={fs(8.5)} strokeWidth={2} />}
         </span>
-        <span style={{ fontSize: fs(12.5), fontWeight: 600, fontFamily: MONO, color: T.primary, overflowWrap: "anywhere" }}>
+        <span style={{ fontSize: fs(13), fontWeight: 650, fontFamily: MONO, color: T.primary, overflowWrap: "anywhere" }}>
           {m.value}
         </span>
       </div>
@@ -214,13 +220,13 @@ export const ThinDivider = () => <div style={{ height: 1, background: fill(0.08)
 
 export function MiniBar({ value, tint }: { value: number; tint: string }) {
   return (
-    <div style={{ height: 5, borderRadius: 3, background: fill(0.09), position: "relative", overflow: "hidden" }}>
+    <div style={{ height: 8, borderRadius: 4, background: fill(0.08), position: "relative", overflow: "hidden" }}>
       <div
         style={{
           position: "absolute",
           inset: 0,
-          width: `max(3px, ${Math.min(100, Math.max(0, value))}%)`,
-          borderRadius: 3,
+          width: `max(4px, ${Math.min(100, Math.max(0, value))}%)`,
+          borderRadius: 4,
           background: tint,
           transition: "width 0.18s ease-out",
         }}

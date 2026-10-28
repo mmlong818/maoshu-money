@@ -73,5 +73,5 @@ export function fs(points: number): number {
   return Math.max(10, points * 1.1 * scale);
 }
 
-export const CARD_RADIUS = 16;
+export const CARD_RADIUS = 20;
 export const OUTER_PAD = 15;

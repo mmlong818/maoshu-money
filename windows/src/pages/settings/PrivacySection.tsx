@@ -13,7 +13,7 @@ type Authorization = { status: string };
 function authorizationText(status: string): string {
   if (status === "authorized") return L("授权成功，可在 Grok Bot 卡片查看");
   if (status === "unsupported_platform") return L("此授权功能仅在 Windows 应用中可用。");
-  if (status === "unsupported_format") return L("Grok Bot 的登录凭据格式暂不支持，请更新 Tokei。");
+  if (status === "unsupported_format") return L("Grok Bot 的登录凭据格式暂不支持，请更新 猫叔。");
   return L("未授权，或 Grok Bot 尚未登录");
 }
 
@@ -85,10 +85,10 @@ export function PrivacySection() {
   return (
     <SettingsSection icon="lock.shield" title={L("隐私与额度")}>
       {row(L("应用活跃统计"), "shareBasicActivity")}
-      <Note>{L("用于了解应用的活跃安装数量，默认开启，可随时关闭。每次启动仅尝试上报一次随机安装 ID、Tokei 版本及系统名称和主次版本。服务端记录首次和最近活跃时间，并保存最近一次来源 IP。不会上传账号、项目、对话、Token、费用或额度。关闭后停止发送，重新开启于下次启动生效；安装 ID 不参与多设备同步。")}</Note>
+      <Note>{L("用于了解应用的活跃安装数量，默认开启，可随时关闭。每次启动仅尝试上报一次随机安装 ID、猫叔 版本及系统名称和主次版本。服务端记录首次和最近活跃时间，并保存最近一次来源 IP。不会上传账号、项目、对话、Token、费用或额度。关闭后停止发送，重新开启于下次启动生效；安装 ID 不参与多设备同步。")}</Note>
       <ThinDivider />
       {row(L("Claude Code CLI 额度查询"), "claudeCLIQuotaEnabled")}
-      <Note>{L("默认关闭。开启后仅在 Claude Desktop 缓存不可用时，使用 Claude Code CLI 已有登录态向 Anthropic 查询 5h、周及模型额度，并缓存 5 分钟。登录 Token 只在内存中使用，不写入 Tokei 文件。")}</Note>
+      <Note>{L("默认关闭。开启后仅在 Claude Desktop 缓存不可用时，使用 Claude Code CLI 已有登录态向 Anthropic 查询 5h、周及模型额度，并缓存 5 分钟。登录 Token 只在内存中使用，不写入 猫叔 文件。")}</Note>
       <ThinDivider />
       {row(L("Grok 实时额度查询"), "grokLiveQuotaEnabled")}
       <Note>{L("默认只读本机 Grok 日志中的额度快照，不访问网络。开启后才会用本地登录凭据请求 Grok 账单接口，以便拿到最新剩余额度。")}</Note>
@@ -102,7 +102,7 @@ export function PrivacySection() {
       </>}
       <ThinDivider />
       {row(L("千问办公额度查询"), "qwenWorkQuotaEnabled")}
-      <Note>{L("默认关闭。开启后，Tokei 仅连接千问办公桌面端在本机 127.0.0.1 提供的受保护接口；千问办公可能随之向官方服务刷新额度。Tokei 不读取或保存登录凭据，需保持千问办公已登录并运行。")}</Note>
+      <Note>{L("默认关闭。开启后，猫叔 仅连接千问办公桌面端在本机 127.0.0.1 提供的受保护接口；千问办公可能随之向官方服务刷新额度。猫叔 不读取或保存登录凭据，需保持千问办公已登录并运行。")}</Note>
       {error && <Note>{error}</Note>}
     </SettingsSection>
   );

@@ -93,7 +93,7 @@ export function QuotaEmptyState({ tool }: { tool: QuotaHistoryTool }) {
       <LineChart size={fs(24)} color={rgba(toolTint(tool), 0.8)} strokeWidth={2} />
       <span style={{ fontSize: fs(12), fontWeight: 600, color: T.secondary }}>{L("正在开始记录额度轨迹")}</span>
       <span style={{ fontSize: fs(10), color: T.tertiary, textAlign: "center" }}>
-        {L("Tokei 每 30 秒刷新，曲线按分钟聚合。保持应用运行后，这里会逐步出现数据。")}
+        {L("猫叔 每 30 秒刷新，曲线按分钟聚合。保持应用运行后，这里会逐步出现数据。")}
       </span>
     </div>
   );

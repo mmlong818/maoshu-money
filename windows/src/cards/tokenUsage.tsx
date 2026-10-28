@@ -320,7 +320,7 @@ function KimiCodeCard({ ctx }: { ctx: CardContext }) {
         <StaleQuotaFootnote
           updated={x.q_updated}
           help={L(
-            "Kimi Code 的登录态很快到期,过期后 Tokei 不再查询官方额度,也不会代它刷新。在 Kimi Code 里发一条消息即可让它自行刷新,额度随后恢复更新。",
+            "Kimi Code 的登录态很快到期,过期后 猫叔 不再查询官方额度,也不会代它刷新。在 Kimi Code 里发一条消息即可让它自行刷新,额度随后恢复更新。",
           )}
         />
       )}

@@ -8,6 +8,10 @@
   <a href="https://github.com/cclank/tokei/releases"><img src="https://img.shields.io/github/v/release/cclank/tokei?style=flat-square&color=blue" alt="Release"></a>
 </p>
 
+> **二次开发说明**：本项目基于 [cclank/tokei](https://github.com/cclank/tokei)（⏱ Tokei 知度）二次开发，
+> 在原项目基础上做了 Windows 版品牌与界面改造（「猫叔的钱去哪了？」AI 用量展示大屏）。
+> 原项目版权归原作者所有，遵循 [MIT License](LICENSE)；感谢原作者的出色工作。
+
 <h1 align="center">⏱ Tokei 知度</h1>
 
 <p align="center">

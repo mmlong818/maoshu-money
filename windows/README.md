@@ -1,5 +1,9 @@
 # Tokei for Windows
 
+> 本分支基于 [cclank/tokei](https://github.com/cclank/tokei) 二次开发：应用更名为「猫叔的钱去哪了？」，
+> 界面为 SAKURA 主题的 AI 用量展示大屏。原项目结构与打包流程保持不变，版权归原作者（MIT License）。
+
+
 Tokei 的 Windows 版：桌面窗口 + 系统托盘，用 [Tauri 2](https://tauri.app)（Rust + WebView2）实现，
 界面是 React + TypeScript。用量数据仍由仓库根目录的 `usage.30s.py` 采集，安装包里带一份内嵌 Python，
 用户不需要自己装。

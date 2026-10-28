@@ -12,6 +12,7 @@ import { pushTrayTooltip, rangeLabel, UsageProvider, useUsageStore } from "./lib
 import { DISPLAY_RANGES, type RangeKey, type Usage } from "./lib/types";
 import { hideQuickPanel, isQuickSurface, openMainWindow } from "./lib/surface";
 import { Icon } from "./ui/Icon";
+import { Hero } from "./ui/hero";
 import { Card, CardHeadTrailing } from "./ui/kit";
 import { fill, fs, rgba, T, Theme } from "./ui/theme";
 
@@ -53,12 +54,12 @@ function Header({ mode, setMode }: { mode: PanelMode; setMode: (m: PanelMode) =>
     <header className="panel-header">
       <button className="plain panel-brand" title={L("主页")} onClick={() => setMode("cards")}>
         <span style={{ position: "relative", display: "grid", placeItems: "center" }}>
-          <Icon name="timer" size={fs(18)} color={rgba(Theme.claude)} strokeWidth={2.6} />
+          <Icon name="sparkles" size={fs(18)} color="#f2a9bb" strokeWidth={2.4} />
           {emoji && <span style={{ position: "absolute", right: -9, top: -9, fontSize: fs(11) }}>{emoji}</span>}
         </span>
         <span style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-          <span style={{ fontSize: fs(15), fontWeight: 700, letterSpacing: 0.5, color: T.primary }}>Tokei</span>
-          <span style={{ fontSize: fs(9), color: T.tertiary, whiteSpace: "nowrap" }}>{L("知度 · AI 用量")}</span>
+          <span style={{ fontSize: fs(13.5), fontWeight: 800, letterSpacing: 1, color: T.primary }}>{L("猫叔的钱去哪了？")}</span>
+          <span style={{ fontSize: fs(9), color: T.tertiary, whiteSpace: "nowrap", letterSpacing: 1 }}>{L("AI用量展示大屏 token")}</span>
         </span>
       </button>
       <span className="panel-updated" style={{ fontSize: fs(9.5) }}>{lastUpdated}</span>
@@ -91,7 +92,7 @@ function QuickHeader({ range }: { range: RangeKey }) {
       <div className="quick-brand">
         <Icon name="timer" size={fs(18)} color={rgba(Theme.claude)} />
         <div>
-          <span className="quick-title">Tokei <span>{L("快捷面板")}</span></span>
+          <span className="quick-title">{L("猫叔的钱去哪了？")} <span>{L("快捷面板")}</span></span>
           <span className="quick-updated" style={{ fontSize: fs(9.5) }}>{lastUpdated}</span>
         </div>
       </div>
@@ -210,6 +211,7 @@ function CardsPage({ range, setRange, copy }: { range: RangeKey; setRange: (k: R
   );
   return (
     <>
+      {!isQuickSurface && <Hero />}
       <SegmentedTabs value={range} onChange={setRange} />
       <div className={ordered.length === 1 ? "grid one" : "grid"}>{ordered.map(render)}</div>
       {inactive.length > 0 && !refreshing && (
@@ -255,7 +257,7 @@ function Footer({ mode, range, copy, quick = false }: { mode: PanelMode; range: 
   };
   return (
     <footer className="panel-footer">
-      <span className="footer-note" style={{ fontSize: fs(9), color: T.tertiary }}>{mode === "settings" ? "Made by lank" : L("成本按 API 价估算,非订阅实付")}</span>
+      <span className="footer-note" style={{ fontSize: fs(9), color: T.tertiary }}>{mode === "settings" ? L("基于 cclank/tokei 二次开发 · Made by lank") : L("成本按 API 价估算,非订阅实付")}</span>
       <div className="footer-actions">
       {!quick && <FooterButton icon={awake ? "cup.and.saucer.fill" : "cup.and.saucer"} label={L("防休眠")} active={awake} onClick={toggleAwake} />}
       <FooterButton

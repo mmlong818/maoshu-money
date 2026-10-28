@@ -223,7 +223,7 @@ function QuotaStatus({ quota }: { quota: QwenWorkQuota }) {
         : L("额度数据");
   const updated = quota.updated != null ? Fmt.reset(quota.updated) : L("更新时间未知");
   return (
-    <div title={L("Tokei 仅通过千问办公桌面端的本机 QwenWork 接口读取额度，不读取或保存登录凭据。")}>
+    <div title={L("猫叔 仅通过千问办公桌面端的本机 QwenWork 接口读取额度，不读取或保存登录凭据。")}>
       <HStack gap={5} style={{ color: quota.stale ? rgba(Theme.orange, 0.88) : T.tertiary }}>
         <Icon name={quota.stale ? "exclamationmark.triangle.fill" : "clock"} size={fs(9)} />
         <span style={{ fontSize: fs(9.5), fontFamily: MONO }}>
