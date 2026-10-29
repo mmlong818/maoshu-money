@@ -8,9 +8,68 @@
   <a href="https://github.com/cclank/tokei/releases"><img src="https://img.shields.io/github/v/release/cclank/tokei?style=flat-square&color=blue" alt="Release"></a>
 </p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/platform-Windows_x64-0078D6?style=flat-square" alt="Windows x64">
+  <img src="https://img.shields.io/badge/tauri-2-24C8DB?style=flat-square&logo=tauri&logoColor=white" alt="Tauri 2">
+  <img src="https://img.shields.io/badge/react-19-61DAFB?style=flat-square&logo=react&logoColor=white" alt="React 19">
+  <img src="https://img.shields.io/badge/version-1.1.0-blue?style=flat-square" alt="v1.1.0">
+  <img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT License">
+</p>
+
+<h1 align="center">猫叔的钱去哪了？</h1>
+
+<p align="center">
+  <strong>AI用量展示大屏 token</strong><br>
+  <sub>每个 token 有据可查，每笔账看得见。</sub><br><br>
+  <a href="https://github.com/mmlong818/maoshu-money/releases/latest">⬇️ 下载 Windows 安装包</a> ·
+  <a href="#二次开发说明">上游项目</a>
+</p>
+
+## 这是什么
+
+一款 Windows 桌面端的 **AI 编程用量大屏**：实时统计 Claude Code、Codex、ZCode、Gemini、Grok 等 20+ 款
+AI 工具的 Token（输入/输出/缓存/推理）、成本（按 API 价估算）与订阅额度。数据全部来自本机会话日志，
+不上传任何对话内容。
+
+在原项目 [cclank/tokei](https://github.com/cclank/tokei) 的 Windows 版基础上做了品牌与界面改造：
+
+- **品牌**：更名「猫叔的钱去哪了？」，副标题「AI用量展示大屏 token」
+- **主题**：SAKURA 深可可配色（樱粉 + 暖金），卡片、指标块、时间页签重新设计
+- **首页横幅**：深夜赶码的木乃伊插画 + 账单主题文案（CASH / BILLS / PAIN）
+- **中文单位**：数值按万 / 亿进位（9210万、1.2亿），其他语言保持 K/M/B
+- 数据采集、额度查询、双窗口与托盘等核心能力与上游一致
+
+## 下载与安装
+
+从 [Releases](https://github.com/mmlong818/maoshu-money/releases/latest) 下载
+`猫叔的钱去哪了_x.y.0_x64-setup.exe`，双击安装（仅当前用户，免管理员）。安装包内置 Python，
+无需额外环境。安装未签名，SmartScreen 提示时选择「仍要运行」。
+
+## 本地构建
+
+```bash
+cd windows
+pnpm install
+pnpm tauri build   # 产物在 src-tauri/target/release/bundle/nsis/
+```
+
+需要 Rust (stable-msvc)、VS Build Tools (C++ 工作负载) 与 Node/pnpm；Python 采集脚本随包内嵌，见 `.github/workflows/windows.yml`。
+
+## 二次开发说明
+
+> 本项目基于 [cclank/tokei](https://github.com/cclank/tokei)（⏱ Tokei 知度）二次开发，
+> 原项目版权归原作者所有，遵循 [MIT License](LICENSE)；感谢原作者的出色工作。
+> 上游的 macOS 菜单栏版与完整文档见原仓库，本仓库以下保留上游 README 原文。
+
+---
+
+<a id="upstream-readme"></a>
+## 附：原项目 README（cclank/tokei）
+
 > **二次开发说明**：本项目基于 [cclank/tokei](https://github.com/cclank/tokei)（⏱ Tokei 知度）二次开发，
 > 在原项目基础上做了 Windows 版品牌与界面改造（「猫叔的钱去哪了？」AI 用量展示大屏）。
 > 原项目版权归原作者所有，遵循 [MIT License](LICENSE)；感谢原作者的出色工作。
+
 
 <h1 align="center">⏱ Tokei 知度</h1>
 
